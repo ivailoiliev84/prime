@@ -3,7 +3,8 @@ class CreatePrime:
     def __init__(self, number):
         self.number = number
 
-    def is_prime(self, num):
+    @staticmethod
+    def is_prime(num):
         for x in range(2, num):
             if num % x == 0:
                 return False
@@ -81,6 +82,7 @@ class CalculateMatrix(FillMatrix):
 
 
 class Matrix(CalculateMatrix):
+
     """
     Main class  create the matrix with given value of N
     """
@@ -88,6 +90,8 @@ class Matrix(CalculateMatrix):
     def __init__(self, number):
         super(Matrix, self).__init__(number)
         self.number = number
+        if self.number < 0:
+            raise ValueError("The input must be positive value")
         self.matrix = self.get_matrix(number + 1)
 
     def get_matrix(self, number):
